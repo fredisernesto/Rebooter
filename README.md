@@ -1,2 +1,2 @@
 # Rebooter
- NodeMCU based device firmware that reboot other device through http commands
+ NodeMCU based device firmware which reboot other device through http commands
