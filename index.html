@@ -1,0 +1,134 @@
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		<title>Rebooter_000001</title> 
+		<style type='text/css'> body,td,th { color: #036; } body { background-color: #999; overflow-x: hidden;} </style> 
+		<script type='text/javascript'>
+			function showContent() 
+			{
+				element = document.getElementById('form3');
+				check = document.getElementById('Act1');
+				if (check.checked) 
+				{
+					element.style.display='block';
+				}
+				else 
+				{
+					element.style.display='none';
+				}
+			}
+			function validityMessage(index)
+			{   
+				if (index == 1) ssid.setCustomValidity('Enter SSID');
+				if (index == 2) pass.setCustomValidity('Enter your Password');
+				if (index == 3) IP.setCustomValidity('Enter a valid IP address');
+				if (index == 4) gateway.setCustomValidity('Enter a valid Gateway');
+				if (index == 5)  subnet.setCustomValidity('Enter a valid Netmask');
+				if (index == 10) ssid.setCustomValidity('');
+				if (index == 20) pass.setCustomValidity('');
+				if (index == 30) IP.setCustomValidity('');
+				if (index == 40) gateway.setCustomValidity('');
+				if (index == 50)  subnet.setCustomValidity('');
+			}
+			function enableWd(index)
+			{   
+				if (document.getElementById('Enable' + index).checked) 
+					document.getElementById('IP' + index).required = true;
+				else
+					document.getElementById('IP' + index).required = false;
+			}
+		</script>
+	</head>
+	<body> 
+		<h2>Rebooter Setting Interface</h2>
+		<fieldset align='left' style='border-style:solid; border-color:#336666; width:200px; height:10px; padding:10px; margin: 5px; float: left;'>
+			<script>document.write('S/N:000001');</script>
+		</fieldset>	<br><br>
+		<h4></h4>
+		<form action='config' method='get' target='pantalla' style='float: left'>
+			<fieldset align='left' style='border-style:solid; border-color:#336666; width:200px; height:330px; padding:10px; margin: 5px;'>
+				<legend><strong>WIFI Settings</strong></legend>
+				SSID: <br> <input name='ssid' id='ssid' type='text' size='15' required oninvalid='validityMessage(1)' oninput='validityMessage(10)' /> <br><br>
+				PASSWORD: <br> <input name='pass'id='pass' type='password' size='15' required  oninvalid='validityMessage(2)' oninput='validityMessage(20)'/> <br><br>
+				IP: <br> <input name='IP' id='IP' type='text' size='15' required oninvalid='validityMessage(3)' oninput='validityMessage(30)' placeholder='192.168.1.100' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]'/> <br><br>
+				GATEWAY: <br> <input name='gateway' id='gateway' type='text' size='15' required oninvalid='validityMessage(4)' oninput='validityMessage(40)' placeholder='192.168.1.1' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]'/> <br><br>
+				SUBNET: <br> <input name='subnet' id='subnet' type='text' size='15' required oninvalid='validityMessage(5)' oninput='validityMessage(50)' placeholder='255.255.255.0' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]'/> <br><br>
+				<input type='submit' value='Connect' />
+			</fieldset>
+		</form>
+		<form action='config' method='get' target='pantalla' style='float: left'>
+			<fieldset align='left' style='border-style:solid; border-color:#336666; width:200px; height:330px; padding:10px; margin: 5px;'>
+				<legend><strong>Control</strong></legend>
+				ID: <br> <input name='ID' type='text' size='15'/> <br><br>
+				<input name='ActivWD' type='checkbox' id='Act1' size='15' onchange='javascript:showContent()'/> Watchdog <br><br>
+				<input type='submit' value='Save' /><br>
+				<fieldset align='center' style='border-style:solid; border-color:#336666; width:160px; height:160px; padding:10px; margin: 5px;'>
+						<legend><strong>Test Buttons</strong></legend>
+						<input type='button' value='Reboot 1' />
+						<input type='button' value='Reboot 5' /><br><br>
+						<input type='button' value='Reboot 2' />
+						<input type='button' value='Reboot 6' /><br><br>
+						<input type='button' value='Reboot 3' />
+						<input type='button' value='Reboot 7' /><br><br>
+						<input type='button' value='Reboot 4' />
+						<input type='button' value='Reboot 8' />
+				</fieldset>
+			</fieldset>
+		</form>
+		<form action='config' name='formWD' id='form3' method='get' target='pantalla' style='float: left; display: none; '>
+			<fieldset align='left' style='border-style:solid; border-color:#336666; width:200px; height:330px; padding:10px; margin: 5px;'>
+				<legend><strong>Watchdog</strong></legend>
+				<br>
+				<table>
+					<tr>
+						<td></td>
+						<td><strong>Machine IP</strong></td>
+						<td><strong>Enable</strong></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td><input name='IP1' id='IP1' type='text' size='15' title='Enter IP address format' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]' /></td>
+						<td><input type='checkbox' value='Enable1' id='Enable1' onchange='enableWd(1);' /></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td><input name='IP2' id='IP2' type='text' size='15' title='Enter IP address format' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]' /></td>
+						<td><input type='checkbox' value='Enable2' id='Enable2' onchange='enableWd(2);'/></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td><input name='IP3' id='IP3' type='text' size='15' title='Enter IP address format' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]' /></td>
+						<td><input type='checkbox' value='Enable3' id='Enable3' onchange='enableWd(3);'/></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td><input name='IP4' id='IP4' type='text' size='15' title='Enter IP address format' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]' /></td>
+						<td><input type='checkbox' value='Enable4' id='Enable4' onchange='enableWd(4);'/></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td><input name='IP5' id='IP5' type='text' size='15' title='Enter IP address format' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]' /></td>
+						<td><input type='checkbox' value='Enable5' id='Enable5' onchange='enableWd(5);'/></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td><input name='IP6' id='IP6' type='text' size='15' title='Enter IP address format' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]' /></td>
+						<td><input type='checkbox' value='Enable6' id='Enable6' onchange='enableWd(6);'/></td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td><input name='IP7' id='IP7' type='text' size='15' title='Enter IP address format' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]' /></td>
+						<td><input type='checkbox' value='Enable7' id='Enable7' onchange='enableWd(7);'/></td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td><input name='IP8' id='IP8' type='text' size='15' title='Enter IP address format' pattern='[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]' /></td>
+						<td><input type='checkbox' value='Enable8' id='Enable8' onchange='enableWd(8);'/></td>
+					</tr>
+				</table><br><br>
+				<input type='submit' value='Save' />
+			</fieldset>
+		</form>
+		<iframe id='pantalla' name='pantalla' src='' width=900px height=400px frameborder='0' scrolling='no'></iframe>
+    </body>
+</html>
