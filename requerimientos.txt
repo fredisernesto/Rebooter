@@ -1,0 +1,37 @@
+Rebooter V_0.1.1
+- Modo de configuración: 
+	-Ingresa en este modo cuando inicia con con el boton on-board presionado
+	-carga en modo AP
+	-configura ID del rebooter
+	-configura SSID
+	-configura password
+	-configura IP Fijo
+	-LED	1-1--------1-1--------1-1--------1-1-------1-1--------------------------------------------....
+- Modo Rebooter:
+	-Ingresa en este modo cuando el botón on-board no esta presionado al momento del inicio
+	-Opera con comandos http
+	-Permite hacer reboot al equipo objetivo
+	*Permite cambiar opciones de red (SSID, pasword, IP)
+	-LED	1------------------1------------------1-----------------1-----------------1------------------1....
+
+Corrección:
+- Espera luego de ejecutar un reboot
+- Validar entradas de formulario
+
+V_0.1.2
+
+
+V_0.2
+-Salida Múltiple
+-Botón de prueba
+-Ping
+-NTP
+-Wathdog
+-Timestamp
+-Responsive WEB
+
+V_0.3
+-Autenticación
+-Post
+-API Rest
+-https
